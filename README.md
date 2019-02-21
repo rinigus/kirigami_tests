@@ -25,3 +25,5 @@ is active. Select the map and try to select Buttons page again. The
 selection will make Buttons active for a short period and will become
 inactive again.
 
+Test has to be run in wide mode.
+
