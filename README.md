@@ -35,7 +35,7 @@ Console log below with expected values inserted as comments
      2	Empty filename passed to function
      3	qml: Replacing page. Depth: 1 / currentIndex: 0
      4	qml: currentIndex changed: -1 / depth: 1
-     ```
+```
 Here, currentIndex should stay 0 if possible. Or -1 should be
 dedicated as invalid index (maybe it is already)
 
@@ -63,12 +63,12 @@ dedicated as invalid index (maybe it is already)
     25	<Unknown File>:7: TypeError: Cannot read property 'contentX' of null
     26	qml: Depth changed: 2
     27	qml: currentIndex changed: 0 / depth: 2
-    ```
+```
     
 Here, currentIndex should stay as 1; value 0 is unexpected and breaks the logic
 leading to application bug.
     
-    ```
+```
     28	<Unknown File>:7: TypeError: Cannot read property 'contentX' of null
     29	qml: Depth changed: 1
     30	file:///usr/local/lib64/qml/org/kde/kirigami.2/Page.qml:282: TypeError: Cannot read property 'globalToolBar' of null
