@@ -17,6 +17,8 @@ Kirigami.ApplicationWindow {
         }
     }
 
+    property var dynpage
+
     Kirigami.Page {
         id: pagemap
         bottomPadding: 0
@@ -52,45 +54,32 @@ Kirigami.ApplicationWindow {
                 Controls.Button {
                     text: "CLICK ME"
                     anchors.centerIn: parent
-                    onClicked: pageStack.push(page2);
-                }
-            }
-        }
-    }
-
-    Component.onCompleted: {
-        pageStack.replace(pagemap)
-    }
-
-    Kirigami.ScrollablePage {
-        id: page2
-
-        title: "Extra page"
-        Kirigami.ColumnView.fillWidth: false
-
-        Column{
-            spacing: 5
-            Repeater {
-                model: 5
-                delegate: Rectangle {
-                    color: "red"
-                    width: lab.width
-                    height: lab.height
-                    Controls.Label {
-                        id: lab
-                        text: "List of items " + model.index
+                    onClicked: {
+                        if (!dynpage) {
+                            var pc = Qt.createComponent(Qt.resolvedUrl("PageOne.qml"));
+                            dynpage = pc.createObject(root)
+                        }
+                        pageStack.push(dynpage);
                     }
                 }
             }
         }
     }
 
+    Component.onCompleted: {
+        console.log("Replacing page. Depth: " + pageStack.depth + " / currentIndex: " + pageStack.currentIndex)
+        pageStack.replace(pagemap)
+        console.log("Page replaced")
+    }
+
     Connections {
         target: pageStack
         onCurrentIndexChanged: root.processCurrentIndex()
+        onDepthChanged: console.log("Depth changed: " + pageStack.depth)
     }
 
     function processCurrentIndex() {
+        console.log("currentIndex changed: " + pageStack.currentIndex + " / depth: " + pageStack.depth)
         if (pageStack.currentIndex === 0 && pageStack.depth > 1) {
             pageStack.pop(pageStack.get(0));
         }
