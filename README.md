@@ -23,6 +23,7 @@ In running application:
 
 * press "Click me" button on page 0
 * on page #1, press "Click me: New page" main action
+* _bonus bug_: notice that content of page #2 is shifted upwards
 * on page #2, press "Click me: pop page" main action
 * on page #1, press "Click me: New page" main action
 * test fails with page #2 taking place of page #1 instead of being added
