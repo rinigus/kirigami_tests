@@ -1,14 +1,14 @@
 # Example codes for testing Kirigami
 
-## preventStealing ignored
+## title shows up on mobile
 
 To run test:
 
 ```
-qmlscene -I /usr/local/lib64/qml preventStealing/App.qml
+QT_QUICK_CONTROLS_MOBILE=1 qmlscene -I /usr/local/lib64/qml preventStealing/App.qml
 ```
 
-Try to press a mouse left button and drag cursor up and down while
-keeping mouse button down. This will update coordinates, shown in the
-middle, as expected. If you try to move the mouse left and right,
-coordinates update will stop very soon.
+You will see a title of the page that has `globalToolBarStyle: Kirigami.ApplicationHeaderStyle.None`
+defined. Works correctly without mobile mode.
+
+Looks like https://bugs.kde.org/show_bug.cgi?id=404481 resurfaced.

@@ -21,6 +21,7 @@ Kirigami.ApplicationWindow {
 
     Kirigami.Page {
         id: pagemap
+        title: "You should not see this title"
         bottomPadding: 0
         globalToolBarStyle: Kirigami.ApplicationHeaderStyle.None
         leftPadding: 0
